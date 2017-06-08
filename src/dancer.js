@@ -17,5 +17,9 @@ MakeDancer.prototype.setPosition = function(top, left) {
   this.$node.css(styleSettings);
 };
 
+MakeDancer.prototype.colorMe = function(color) {
+  this.$node.css('border', '10px solid ' + color);
+};
+
 /*var test = new MakeDancer(1,1,1)
 console.log(test.step);*/
