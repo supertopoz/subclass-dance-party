@@ -21,16 +21,15 @@ $(document).ready(function() {
     var dancerMakerFunction = window[dancerMakerFunctionName];
 
       // make a dancer with a random position
-
+    var idNum = window.dancers.length;
     var dancer = new dancerMakerFunction(
       $('#floor').height() * Math.random(),
       $('#floor').width() * Math.random(),
-      Math.random() * 1000
+      Math.random() * 1000,
+      idNum
     );
-    console.log(dancer);
-    window.dancers.push(dancer);
+    window.dancers.push(dancer)
     $('#floor').append(dancer.$node);
 
   });
-
 });

@@ -13,13 +13,19 @@ MakeDancer.prototype.step = function(timeBetweenSteps) {
 
 
 MakeDancer.prototype.setPosition = function(top, left) {
-  var styleSettings = { top: top, left: left };
-  this.$node.css(styleSettings);
+  var styleSettings = { top: top, left: left-100 };
+  this.$node.animate(styleSettings,1000);
 };
 
-MakeDancer.prototype.colorMe = function(color) {
-  this.$node.css('border', '10px solid ' + color);
-};
+
+MakeDancer.prototype.lineUp = function(numDancers, id){
+    
+  var lineLength = $('#floor').width();
+  var left = (lineLength/numDancers) * id -50;
+  var styleSettings = { top: '75%', left: left };
+//  var transition = this.$node.css(styleSettings);
+  this.$node.animate(styleSettings,1000)
+}
 
 /*var test = new MakeDancer(1,1,1)
 console.log(test.step);*/

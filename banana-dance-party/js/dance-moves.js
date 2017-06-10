@@ -1,19 +1,52 @@
+/*eslint-disable no-mixed-spaces-and-tabs */
+/*eslint-disable no-unused-vars */
+/*eslint-disable indent */
+/*eslint-disable no-console */
+/*eslint-disable semi */
+/*eslint-disable no-delete-var */
+/*eslint-disable quotes */
+/*eslint-disable no-undef */
+
+
 $(document).ready(function() {
 
 
-
   $(document).on('mouseenter','.allenBanana', function() {
-  	var rightDance = 'https://lh5.googleusercontent.com/Yo0__X4LSN1iLCZIDQ52VjhEoAE2g6L9GtV_9iaLR_uMaDOOwt4jWJ-XDGxJJHRF_bsANw4qsYt8AJlzi_HTrvRJy0ad07jRfD7CVrYkBIMpC1RU8K0KDOC6d4FCL_djIutiYr7v';
-  	var leftDance =  'https://lh5.googleusercontent.com/VfwxsCYDKLBN5SftPU4aSkp__mrhOvbpW_8_xsymb1bE3OM0OHQjrlBM3_xonPJr45ki4L_V8_cV5UwuD5mlcklf8JRRHmWjaD1lUnhcJsFklH2DFTtFUooIXihCud60cFL8Ecq1';
-  	if ($(this).attr('src') === rightDance){
-  		$(this).attr('src',leftDance);
-  	} else {
-  		$(this).attr('src',rightDance);
-  	}
-  });
+       var instanceId = $(this).parent().attr('id');
+       var num = instanceId.replace("dancer-","");
+       window.dancers[num].randomDance();
 });
 
-  $(document).on('mouseenter','.allenBanana', function() {
-     console.log($(this));
+//play audio
+
+  $('#start-music' || '#start-music-2').on('click',function(){
+     var audio = document.getElementById("audio");
+     audio.play();
+   })
+
+
+// End of document on ready
+});
+
+$('#lineUp').on('click', function(){
+  var numDancers = window.dancers.length;
+    if (numDancers === 0) alert("No dancers to make a line with");
+
+  if ($(this).text() === 'Line up'){
+    window.dancers.forEach( x=> {
+    var id = x.$node.attr('id').replace("dancer-", "")
+    x.lineUp(numDancers, id);
+  });
+  $(this).text("Random");
+} else {
+    window.dancers.forEach( x=> {
+      var top = $('#floor').height() * Math.random()
+      var left = $('#floor').width() * Math.random()
+    x.setPosition(top, left);
+    });
+    $(this).text("Line up");
   }
 
+
+
+})
