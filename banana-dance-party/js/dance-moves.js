@@ -34,7 +34,8 @@ $('#lineUp').on('click', function(){
 
   if ($(this).text() === 'Line up'){
     window.dancers.forEach( x=> {
-    var id = x.$node.attr('id').replace("dancer-", "")
+    var cut = x.$node.attr('id').indexOf('-');
+    var id = x.$node.attr('id').substring(cut+1);
     x.lineUp(numDancers, id);
   });
   $(this).text("Random");
@@ -48,5 +49,18 @@ $('#lineUp').on('click', function(){
   }
 
 
+
+})
+
+
+$(document).on('click', '.dancer',function(){
+  var cut = $(this).attr('id').indexOf('-');
+  var id = $(this).attr('id').substring(cut+1);
+  window.dancers[id].specialMove()
+})
+
+$('#clearUp').on('click', function(){
+   $('#floor').empty();
+   window.dancer = [];
 
 })

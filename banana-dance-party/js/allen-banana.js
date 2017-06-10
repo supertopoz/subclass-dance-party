@@ -1,25 +1,22 @@
-var MakeAllenBanana = function (top, left, timeBetweenSteps,idNum) {
+var MakeAllenBanana = function (top, left, timeBetweenSteps,idNum,dancerName) {
   MakeDancer.call(this);
-  this.$node = $('<span class="dancer" id=dancer-'+idNum+'><img class="allenBanana" src="https://lh5.googleusercontent.com/Yo0__X4LSN1iLCZIDQ52VjhEoAE2g6L9GtV_9iaLR_uMaDOOwt4jWJ-XDGxJJHRF_bsANw4qsYt8AJlzi_HTrvRJy0ad07jRfD7CVrYkBIMpC1RU8K0KDOC6d4FCL_djIutiYr7v" alt=""></span>');
+  this.danceData = JSON.parse(data);
+  this.$node = $('<span class="dancer" id='+dancerName+'-'+idNum+'><img src="'+this.danceData.bananas[dancerName].slide+'""></span>');
   this._timeBetweenSteps = timeBetweenSteps;
   this.step();
   this.setPosition(top, left);
-  this.danceData = JSON.parse(data);
-  this.randomDance();
+  this.name = dancerName;
+  this.randomDance(name);
+  this.idNum = idNum
 };
 
 MakeAllenBanana.prototype = Object.create(MakeDancer.prototype);
 MakeAllenBanana.prototype.constructor = MakeAllenBanana;
 
-
-MakeAllenBanana.prototype.randomDance = function(){
-
-  var moves = ["grind","leftTap","rigthTap","upDown","slide","wiggle"]
-  var randomMove = Math.floor(Math.random() * (6 - 0));
-  var url = this.danceData.bananas.allen[moves[randomMove]];
+MakeAllenBanana.prototype.specialMove = function() {
   var that = this;
-  setTimeout(function(){
-  that.$node.children().attr("src",url);
-  that.randomDance();
+  this.$node.children().addClass('rotateDancer');
+  setTimeout(function() {
+    that.$node.children().removeClass('rotateDancer');
   },2000);
 }

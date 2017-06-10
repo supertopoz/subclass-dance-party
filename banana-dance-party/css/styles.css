@@ -21,17 +21,16 @@ body, a:link, a:visited, a:active{
   background-color: #777;
 }
 .dancer{
-  /*border:10px solid red;*/
   border-radius:10px;
   position:absolute;
 }
 
 #floor {
   width: 75%;
-
+  top:300px;
   padding-right:30px;
-  margin-bottom:5%;
-  min-height: 600px;
+  padding-bottom:2%;
+  height: 300px;
 }
 
 .navbar-custom .nav li a:hover {
@@ -40,4 +39,23 @@ body, a:link, a:visited, a:active{
 
 #footprint-txt{
   font-size: 10px;
+}
+
+
+.rotateDancer {
+  animation: roll 2s;
+}
+
+@keyframes roll {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.dancer {
+  -webkit-filter: drop-shadow(5px 5px 5px #222);
+  filter: drop-shadow(5px 5px 5px #222);
 }
