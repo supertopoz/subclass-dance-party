@@ -16,7 +16,7 @@ MakeDancer.prototype.step = function(timeBetweenSteps) {
 
 MakeDancer.prototype.setPosition = function(top, left) {
 
-  var styleSettings = { top: top-100, left: left-100 };
+  var styleSettings = { top: top-300, left: left-100 };
   var moveSpeed = Math.floor(Math.random() * (5000 - 0));
   this.$node.children().css({"width":150,"height":150})
   this.$node.animate(styleSettings,moveSpeed);
@@ -28,7 +28,7 @@ MakeDancer.prototype.lineUp = function(numDancers, id){
   var lineLength = $('#floor').width();
   var left = (lineLength/numDancers) * id;
   console.log(lineLength);
-  var styleSettings = { top: 100, left: left };
+  var styleSettings = { top: -200, left: left };
   var moveSpeed = Math.floor(Math.random() * (5000 - 0));
   this.$node.animate(styleSettings,moveSpeed)
 }
