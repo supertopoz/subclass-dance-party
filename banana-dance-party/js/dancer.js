@@ -10,8 +10,7 @@ window.MakeDancer = class MakeDancer {
 }
 
 MakeDancer.prototype.step = function(timeBetweenSteps) {
-  var that = this;
-  setTimeout(function() { that.step(); }, this._timeBetweenSteps);
+  setTimeout( () =>{ this.step()}, this._timeBetweenSteps);
 };
 
 
@@ -41,11 +40,8 @@ MakeDancer.prototype.randomDance = function(){
   var moves = ["grind","leftTap","rightTap","upDown","slide","wiggle"]
   var randomMove = Math.floor(Math.random() * (6 - 0));
   var url = this.danceData.bananas[this.name][moves[randomMove]];
-  var that = this;
-  setTimeout(function(){
-
-  that.$node.children().attr("src",url);
-
-  that.randomDance();
+  setTimeout(() =>{
+  this.$node.children().attr("src",url);
+  this.randomDance();
   },2000);
 }
